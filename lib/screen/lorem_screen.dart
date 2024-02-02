@@ -17,7 +17,7 @@ class _LoreamState extends State<Loream> {
   // String discription = Get.arguments["discription"];
   @override
   void initState() {
-    super.initState();
+    super.initState(); 
   }
 
   @override

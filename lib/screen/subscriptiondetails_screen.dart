@@ -41,9 +41,9 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
       if(preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "4"){
         dropdownValue  ='Accept' ;
       }else if(preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "8") {
-        dropdownValue  ='Unable to Delivery As Customer Unavailable' ;
+        dropdownValue  ='Unable to Delivered' ;
       }else if(preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "10") {
-        dropdownValue  ='Ability To Try Delivering Again In The Next Slot' ;
+        dropdownValue  ='Attempt Again' ;
       }else if(preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "9") {
         dropdownValue  ='Door Locked' ;
       }else if(preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "3")
@@ -55,15 +55,16 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
 
   List<String> statusOptions = [
     "Accept",
-    "Unable to Delivery As Customer Unavailable",
+    "Unable to Delivered",
     "Door Locked",
-    "Ability To Try Delivering Again In The Next Slot",];
+    "Attempt Again",];
 
   // Variable to store the selected index
   String? dropdownValue;
 
   @override
   Widget build(BuildContext context) {
+    print("new status ${preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "4"}");
     return Scaffold(
       backgroundColor: bgcolor,
       appBar: AppBar(
@@ -82,10 +83,10 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
       ),
       bottomNavigationBar:
       GetBuilder<PreScriptionControllre>(builder: (context) {
-        return preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "3"
-        || preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "4" ||  preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "8"||
-            preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "10" || preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "3" ||
-            preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "9"
+        return
+          // preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "4" ||  preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "8"||
+          //   preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "10" || preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "9" ||
+            preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "3"
             ? Container(
           color: WhiteColor,
           height: Get.height * 0.09,
@@ -128,36 +129,35 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                     ),
                   ],
                 ),
-                // InkWell(
-                //   child: InkWell(
-                //     onTap: () {
-                //       preScriptionControllre.mackDecisionApi(
-                //           orderID: oID, status: "1", reson: "n/a");
-                //     },
-                //     child: Container(
-                //       height: 50,
-                //       width: Get.width * 0.45,
-                //       alignment: Alignment.center,
-                //       decoration: BoxDecoration(
-                //         borderRadius: BorderRadius.circular(12),
-                //         gradient: gradient.btnGradient,
-                //       ),
-                //       child: Text(
-                //         "Accept",
-                //         style: TextStyle(
-                //           fontFamily: FontFamily.gilroyBold,
-                //           color: WhiteColor,
-                //           fontSize: 16,
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // )
+                InkWell(
+                  child: InkWell(
+                    onTap: () {
+                      preScriptionControllre.mackDecisionApi(
+                          orderID: oID, status: "1", reson: "n/a");
+                    },
+                    child: Container(
+                      height: 50,
+                      width: Get.width * 0.45,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        gradient: gradient.btnGradient,
+                      ),
+                      child: Text(
+                        "Accept",
+                        style: TextStyle(
+                          fontFamily: FontFamily.gilroyBold,
+                          color: WhiteColor,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
-        )
-            : preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "4"
+        ): preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "4"
             ? Container(
           color: WhiteColor,
           height: Get.height * 0.09,
@@ -1005,7 +1005,7 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                                 preScriptionControllre.mackDecisionApi(
                                 orderID: oID, status: "1", reson: "n/a");
                                 }
-                                else if(value == "Unable to Delivery As Customer Unavailable"){
+                                else if(value == "Unable to Delivered"){
                                 preScriptionControllre.mackDecisionApi(
                                 orderID: oID, status: "8", reson: "n/a");
                                 }
@@ -1013,7 +1013,7 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                                 preScriptionControllre.mackDecisionApi(
                                 orderID: oID, status: "9", reson: "n/a");
                                 }
-                                else if(value == "Ability To Try Delivering Again In The Next Slot") {
+                                else if(value == "Attempt Again") {
                                   preScriptionControllre.mackDecisionApi(
                                       orderID: oID, status: "10", reson: "n/a");
                                 }

@@ -64,9 +64,9 @@ class _OrderdetailsScreenState extends State<OrderdetailsScreen> {
       if(myOrderController.orderInformetionInfo?.orderdata.flowId == "4"){
         dropdownValue  ='Accept' ;
       }else if(myOrderController.orderInformetionInfo?.orderdata.flowId == "8") {
-        dropdownValue  ='Unable to Delivery As Customer Unavailable' ;
+        dropdownValue  ='Unable to Delivered' ;
       }else if(myOrderController.orderInformetionInfo?.orderdata.flowId == "10") {
-        dropdownValue  ='Ability To Try Delivering Again In The Next Slot' ;
+        dropdownValue  ='Attempt Again' ;
       }else if(myOrderController.orderInformetionInfo?.orderdata.flowId == "9") {
         dropdownValue  ='Door Locked' ;
       }else if(myOrderController.orderInformetionInfo?.orderdata.flowId == "3")
@@ -78,9 +78,9 @@ class _OrderdetailsScreenState extends State<OrderdetailsScreen> {
 
   List<String> statusOptions = [
     "Accept",
-    "Unable to Delivery As Customer Unavailable",
+    "Unable to Delivered",
     "Door Locked",
-    "Ability To Try Delivering Again In The Next Slot",];
+    "Attempt Again",];
 
   // Variable to store the selected index
   String? dropdownValue;
@@ -106,8 +106,7 @@ class _OrderdetailsScreenState extends State<OrderdetailsScreen> {
       bottomNavigationBar: GetBuilder<MyOrderController>(
         builder: (controller) {
           return
-            myOrderController.orderInformetionInfo?.orderdata.flowId == "4" ||
-                myOrderController.orderInformetionInfo?.orderdata.flowId == "8" ||
+            myOrderController.orderInformetionInfo?.orderdata.flowId == "4" || myOrderController.orderInformetionInfo?.orderdata.flowId == "8" ||
                 myOrderController.orderInformetionInfo?.orderdata.flowId == "10"||
                 myOrderController.orderInformetionInfo?.orderdata.flowId == "9"||
                 myOrderController.orderInformetionInfo?.orderdata.flowId == "3"
@@ -832,6 +831,10 @@ class _OrderdetailsScreenState extends State<OrderdetailsScreen> {
                             SizedBox(
                               height: 10,
                             ),
+                            myOrderController.orderInformetionInfo?.orderdata.flowId == "4" || myOrderController.orderInformetionInfo?.orderdata.flowId == "8" ||
+                                myOrderController.orderInformetionInfo?.orderdata.flowId == "10"||
+                                myOrderController.orderInformetionInfo?.orderdata.flowId == "9"||
+                                myOrderController.orderInformetionInfo?.orderdata.flowId == "3" ?
                             Padding(
                               padding: const EdgeInsets.all(0.0),
                               child: Column(
@@ -860,7 +863,7 @@ class _OrderdetailsScreenState extends State<OrderdetailsScreen> {
                                         myOrderController.mackDecisionApi(
                                             orderID: oID, status: "1", reson: "n/a");
                                       }
-                                      else if(value == "Unable to Delivery As Customer Unavailable"){
+                                      else if(value == "Unable to Delivered"){
                                         myOrderController.mackDecisionApi(
                                             orderID: oID, status: "8", reson: "n/a");
                                       }
@@ -868,7 +871,7 @@ class _OrderdetailsScreenState extends State<OrderdetailsScreen> {
                                         myOrderController.mackDecisionApi(
                                             orderID: oID, status: "9", reson: "n/a");
                                       }
-                                      else if(value == "Ability To Try Delivering Again In The Next Slot") {
+                                      else if(value == "Attempt Again") {
                                         myOrderController.mackDecisionApi(
                                             orderID: oID, status: "10", reson: "n/a");
                                       }
@@ -885,7 +888,7 @@ class _OrderdetailsScreenState extends State<OrderdetailsScreen> {
                                   ),
                                 ],
                               ),
-                            ),
+                            ): SizedBox()
                           ],
                         ),
                         decoration: BoxDecoration(
