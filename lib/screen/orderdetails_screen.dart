@@ -66,7 +66,7 @@ class _OrderdetailsScreenState extends State<OrderdetailsScreen> {
       }else if(myOrderController.orderInformetionInfo?.orderdata.flowId == "8") {
         dropdownValue  ='Unable to Delivered' ;
       }else if(myOrderController.orderInformetionInfo?.orderdata.flowId == "10") {
-        dropdownValue  ='Attempt Again' ;
+        dropdownValue  ='Will Attempt Again' ;
       }else if(myOrderController.orderInformetionInfo?.orderdata.flowId == "9") {
         dropdownValue  ='Door Locked' ;
       }else if(myOrderController.orderInformetionInfo?.orderdata.flowId == "3")
@@ -80,7 +80,7 @@ class _OrderdetailsScreenState extends State<OrderdetailsScreen> {
     "Accept",
     "Unable to Delivered",
     "Door Locked",
-    "Attempt Again",];
+    "Will Attempt Again",];
 
   // Variable to store the selected index
   String? dropdownValue;
@@ -871,13 +871,12 @@ class _OrderdetailsScreenState extends State<OrderdetailsScreen> {
                                         myOrderController.mackDecisionApi(
                                             orderID: oID, status: "9", reson: "n/a");
                                       }
-                                      else if(value == "Attempt Again") {
+                                      else if(value == "Will Attempt Again") {
                                         myOrderController.mackDecisionApi(
                                             orderID: oID, status: "10", reson: "n/a");
                                       }
                                       else{
                                       }
-
                                     },
                                     items: statusOptions.map<DropdownMenuItem<String>>((String value) {
                                       return DropdownMenuItem<String>(

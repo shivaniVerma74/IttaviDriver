@@ -9,7 +9,6 @@ import 'package:deliveryboy/utils/Colors.dart';
 import 'package:deliveryboy/utils/Custom_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
 import 'dart:ui' as ui;
@@ -38,33 +37,11 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
     setState(() {
       _signaturePadKey.currentState?.clear();
       imageEncoded = "";
-      if(preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "4"){
-        dropdownValue  ='Accept' ;
-      }else if(preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "8") {
-        dropdownValue  ='Unable to Delivered' ;
-      }else if(preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "10") {
-        dropdownValue  ='Attempt Again' ;
-      }else if(preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "9") {
-        dropdownValue  ='Door Locked' ;
-      }else if(preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "3")
-      {
-      }
-      // dropdownValue =
     });
   }
 
-  List<String> statusOptions = [
-    "Accept",
-    "Unable to Delivered",
-    "Door Locked",
-    "Attempt Again",];
-
-  // Variable to store the selected index
-  String? dropdownValue;
-
   @override
   Widget build(BuildContext context) {
-    print("new status ${preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "4"}");
     return Scaffold(
       backgroundColor: bgcolor,
       appBar: AppBar(
@@ -83,15 +60,13 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
       ),
       bottomNavigationBar:
       GetBuilder<PreScriptionControllre>(builder: (context) {
-        return
-          // preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "4" ||  preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "8"||
-          //   preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "10" || preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "9" ||
-            preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "3"
+        return preScriptionControllre.preDetailsInfo?.orderProductList.flowId ==
+            "3"
             ? Container(
           color: WhiteColor,
           height: Get.height * 0.09,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -157,7 +132,9 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
               ],
             ),
           ),
-        ): preScriptionControllre.preDetailsInfo?.orderProductList.flowId == "4"
+        )
+            : preScriptionControllre.preDetailsInfo?.orderProductList.flowId ==
+            "4"
             ? Container(
           color: WhiteColor,
           height: Get.height * 0.09,
@@ -212,7 +189,8 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                         } else {
                           showToastMessage("Please Signature");
                         }
-                      } else {
+                      }
+                      else {
                         showToastMessage(
                             "Kindly ensure that all delivery dates are marked as completed before proceeding.");
                       }
@@ -239,7 +217,8 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
               ],
             ),
           ),
-        ): SizedBox();
+        )
+            : SizedBox();
       }),
       body: GetBuilder<PreScriptionControllre>(builder: (context) {
         return SingleChildScrollView(
@@ -524,98 +503,98 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Text(
-                      //   "Item Info".tr,
-                      //   style: TextStyle(
-                      //     fontFamily: FontFamily.gilroyBold,
-                      //     fontSize: 14,
-                      //     color: gradient.defoultColor,
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   height: 10,
-                      // ),
-                      // Row(
-                      //   children: [
-                      //     Expanded(
-                      //       child: Row(
-                      //         mainAxisAlignment: MainAxisAlignment.start,
-                      //         children: [
-                      //           Text(
-                      //             "Price".tr,
-                      //             style: TextStyle(
-                      //               fontFamily: FontFamily.gilroyBold,
-                      //               fontSize: 13,
-                      //               color: greytext,
-                      //             ),
-                      //           ),
-                      //           SizedBox(
-                      //             width: 2,
-                      //           ),
-                      //           Text(
-                      //             ":",
-                      //             style: TextStyle(
-                      //               fontFamily: FontFamily.gilroyBold,
-                      //               fontSize: 13,
-                      //               color: greytext,
-                      //             ),
-                      //           ),
-                      //           SizedBox(
-                      //             width: 5,
-                      //           ),
-                      //           Text(
-                      //             "Rs.${preScriptionControllre.preDetailsInfo?.orderProductList.orderProductData[preScriptionControllre.currentIndex].productPrice}",
-                      //             style: TextStyle(
-                      //               fontFamily: FontFamily.gilroyBold,
-                      //               fontSize: 14,
-                      //               color: Colors.grey,
-                      //             ),
-                      //           )
-                      //         ],
-                      //       ),
-                      //     ),
-                      //     Expanded(
-                      //       child: Row(
-                      //         mainAxisAlignment: MainAxisAlignment.end,
-                      //         children: [
-                      //           Text(
-                      //             "Total".tr,
-                      //             style: TextStyle(
-                      //               fontFamily: FontFamily.gilroyBold,
-                      //               fontSize: 13,
-                      //               color: greytext,
-                      //             ),
-                      //           ),
-                      //           SizedBox(
-                      //             width: 2,
-                      //           ),
-                      //           Text(
-                      //             ":",
-                      //             style: TextStyle(
-                      //               fontFamily: FontFamily.gilroyBold,
-                      //               fontSize: 13,
-                      //               color: greytext,
-                      //             ),
-                      //           ),
-                      //           SizedBox(
-                      //             width: 5,
-                      //           ),
-                      //           Text(
-                      //             "Rs.${preScriptionControllre.preDetailsInfo?.orderProductList.orderProductData[preScriptionControllre.currentIndex].productTotal}",
-                      //             style: TextStyle(
-                      //               fontFamily: FontFamily.gilroyBold,
-                      //               fontSize: 14,
-                      //               color: Colors.grey,
-                      //             ),
-                      //           )
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      // SizedBox(
-                      //   height: 10,
-                      // ),
+                      Text(
+                        "Item Info".tr,
+                        style: TextStyle(
+                          fontFamily: FontFamily.gilroyBold,
+                          fontSize: 14,
+                          color: gradient.defoultColor,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Price".tr,
+                                  style: TextStyle(
+                                    fontFamily: FontFamily.gilroyBold,
+                                    fontSize: 13,
+                                    color: greytext,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 2,
+                                ),
+                                Text(
+                                  ":",
+                                  style: TextStyle(
+                                    fontFamily: FontFamily.gilroyBold,
+                                    fontSize: 13,
+                                    color: greytext,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "${currency}${preScriptionControllre.preDetailsInfo?.orderProductList.orderProductData[preScriptionControllre.currentIndex].productPrice}",
+                                  style: TextStyle(
+                                    fontFamily: FontFamily.gilroyBold,
+                                    fontSize: 14,
+                                    color: Colors.grey,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  "Total".tr,
+                                  style: TextStyle(
+                                    fontFamily: FontFamily.gilroyBold,
+                                    fontSize: 13,
+                                    color: greytext,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 2,
+                                ),
+                                Text(
+                                  ":",
+                                  style: TextStyle(
+                                    fontFamily: FontFamily.gilroyBold,
+                                    fontSize: 13,
+                                    color: greytext,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "${currency}${preScriptionControllre.preDetailsInfo?.orderProductList.orderProductData[preScriptionControllre.currentIndex].productTotal}",
+                                  style: TextStyle(
+                                    fontFamily: FontFamily.gilroyBold,
+                                    fontSize: 14,
+                                    color: Colors.grey,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Row(
                         children: [
                           Expanded(
@@ -812,7 +791,7 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                       OrderInfo(
                         title: "Subtotal".tr,
                         subtitle:
-                        "Rs.${preScriptionControllre.preDetailsInfo?.orderProductList.orderSubTotal}",
+                        "${currency}${preScriptionControllre.preDetailsInfo?.orderProductList.orderSubTotal}",
                       ),
                       SizedBox(
                         height: 13,
@@ -820,7 +799,7 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                       OrderInfo(
                         title: "Delivery Charge".tr,
                         subtitle:
-                        "Rs.${preScriptionControllre.preDetailsInfo?.orderProductList.deliveryCharge}",
+                        "${currency}${preScriptionControllre.preDetailsInfo?.orderProductList.deliveryCharge}",
                       ),
                       SizedBox(
                         height: 13,
@@ -828,7 +807,7 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                       OrderInfo(
                         title: "Store Charge".tr,
                         subtitle:
-                        "Rs.${preScriptionControllre.preDetailsInfo?.orderProductList.storeCharge}",
+                        "${currency}${preScriptionControllre.preDetailsInfo?.orderProductList.storeCharge}",
                       ),
                       preScriptionControllre.preDetailsInfo
                           ?.orderProductList.couponAmount !=
@@ -843,7 +822,7 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                           ? OrderInfo(
                         title: "Coupon Amount".tr,
                         subtitle:
-                        "Rs.${preScriptionControllre.preDetailsInfo?.orderProductList.couponAmount}",
+                        "${currency}${preScriptionControllre.preDetailsInfo?.orderProductList.couponAmount}",
                       )
                           : SizedBox(),
                       SizedBox(
@@ -852,7 +831,7 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                       OrderInfo(
                         title: "Total".tr,
                         subtitle:
-                        "Rs.${preScriptionControllre.preDetailsInfo?.orderProductList.orderTotal}",
+                        "${currency}${preScriptionControllre.preDetailsInfo?.orderProductList.orderTotal}",
                       ),
                       SizedBox(
                         height: 2,
@@ -976,60 +955,6 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 10,),
-                      Padding(
-                        padding: const EdgeInsets.all(0.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Update Status", style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),),
-                            DropdownButton<String>(
-                              hint: Text("Select Status"),
-                              value: dropdownValue,
-                              // icon: Padding(
-                              //   padding: const EdgeInsets.only(right: 20),
-                              //   child: const Icon(Icons.arrow_downward),
-                              // ),
-                              elevation: 16,
-                              style: const TextStyle(color: Colors.black),
-                              underline: Container(
-                                height: 1,
-                                color: Colors.deepPurpleAccent,
-                              ),
-                              onChanged: (String? value) {
-                                // This is called when the user selects an item.
-                                setState(() {
-                                  dropdownValue = value!;
-                                });
-                                if(value == "Accept"){
-                                preScriptionControllre.mackDecisionApi(
-                                orderID: oID, status: "1", reson: "n/a");
-                                }
-                                else if(value == "Unable to Delivered"){
-                                preScriptionControllre.mackDecisionApi(
-                                orderID: oID, status: "8", reson: "n/a");
-                                }
-                                else if(value == "Door Locked"){
-                                preScriptionControllre.mackDecisionApi(
-                                orderID: oID, status: "9", reson: "n/a");
-                                }
-                                else if(value == "Attempt Again") {
-                                  preScriptionControllre.mackDecisionApi(
-                                      orderID: oID, status: "10", reson: "n/a");
-                                }
-                                else{
-                                  }
-                              },
-                              items: statusOptions.map<DropdownMenuItem<String>>((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value, style: TextStyle(fontSize: 13),),
-                                );
-                              }).toList(),
-                            ),
-                          ],
-                        ),
-                      ),
                     ],
                   ),
                   decoration: BoxDecoration(
@@ -1038,7 +963,9 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                   ),
                 ),
                 SizedBox(height: Get.height * 0.02),
-                preScriptionControllre.preDetailsInfo?.orderProductList.additionalNote != ""
+                preScriptionControllre.preDetailsInfo?.orderProductList
+                    .additionalNote !=
+                    ""
                     ? Container(
                   padding: EdgeInsets.symmetric(
                       horizontal: 12, vertical: 12),
@@ -1058,7 +985,9 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                         height: 10,
                       ),
                       Text(
-                        preScriptionControllre.preDetailsInfo?.orderProductList.additionalNote ?? "",
+                        preScriptionControllre.preDetailsInfo
+                            ?.orderProductList.additionalNote ??
+                            "",
                         style: TextStyle(
                           fontFamily: FontFamily.gilroyBold,
                           color: Colors.grey,
@@ -1071,8 +1000,10 @@ class _MyPriscriptionInfoState extends State<MyPriscriptionInfo> {
                     borderRadius: BorderRadius.circular(5),
                     color: WhiteColor,
                   ),
-                ): SizedBox(),
-                preScriptionControllre.preDetailsInfo?.orderProductList.flowId ==
+                )
+                    : SizedBox(),
+                preScriptionControllre.preDetailsInfo?.orderProductList
+                    .flowId ==
                     "4" &&
                     preScriptionControllre.isComplite == "0"
                     ? Stack(

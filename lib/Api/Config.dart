@@ -2,7 +2,8 @@
 
 class Config {
   static const String oneSignel = "************************************";
-  static const String baseUrl = 'https://ittavi.developmentalphawizz.com/';
+  static const String baseUrl = 'https://admin.ittavi.in/';
+  // static const String baseUrl = 'https://ittavi.developmentalphawizz.com/';
   // static const String baseUrl = 'https://milkyway.cscodetech.cloud/';
   static const String imageurl = baseUrl;
 

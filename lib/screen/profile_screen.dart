@@ -157,14 +157,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: CircularProgressIndicator(),
                             );
                     }),
-
-                    setting(
-                      SettingName: "Delete Account",
-                      image: "assets/trash.png",
-                      onTap: () {
-                        deleteSheet();
-                      },
-                    ),
+                    // setting(
+                    //   SettingName: "Delete Account",
+                    //   image: "assets/trash.png",
+                    //   onTap: () {
+                    //     deleteSheet();
+                    //   },
+                    // ),
                     setting(
                       SettingName: "Logout",
                       image: "assets/logout.png",
